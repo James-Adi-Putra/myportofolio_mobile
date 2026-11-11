@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -137,12 +138,15 @@ class ItemCard extends StatelessWidget {
       child: InkWell(
         // Aksi ketika kartu ditekan oleh pengguna.
         onTap: () {
-          // Menampilkan SnackBar dengan pesan interaktif.
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!")),
-            );
+          // Menampilkan Toast dengan pesan interaktif.
+          Fluttertoast.showToast(
+            msg: "Kamu telah menekan tombol ${item.name}!",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.black87,
+            textColor: Colors.white,
+            fontSize: 14.0,
+          );
         },
         child: Container(
           padding: const EdgeInsets.all(8),
