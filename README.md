@@ -40,4 +40,28 @@ Saya menggunakan Claude sebagai bantuan dalam beberapa bagian tugas ini, dengan 
 4. Mengganti data contoh Burhan dengan identitas saya sendiri, lalu menjalankan dan menguji aplikasi di Chrome
 
 ## Refleksi Proses
-Tugas 08 membuat saya paham bahwa Flutter menyusun tampilan dari widget yang bersarang, dan bahwa memecahnya menjadi komponen yang bisa dipakai ulang seperti InfoCard dan ItemCard membuat kode lebih rapi. dan beberapa error saat di environment mengajarkan saya bagaimana jika terjadi situasi serupa kedepannya saat terjadi error di laptopku. Tugas 08 progresnya cukup lancar karena ada penjelasan cara bagaimana mengganti warna
+Tugas 07 membuat saya paham bahwa Flutter menyusun tampilan dari widget yang bersarang, dan bahwa memecahnya menjadi komponen yang bisa dipakai ulang seperti InfoCard dan ItemCard membuat kode lebih rapi. dan beberapa error saat di environment mengajarkan saya bagaimana jika terjadi situasi serupa kedepannya saat terjadi error di laptopku. Tugas 08 progresnya cukup lancar karena ada penjelasan cara bagaimana mengganti warna
+
+
+
+### Tugas 8
+1. Navigator.push() menambahkan halaman baru ke stack navigasi sehingga tombol Back pada perangkat atau Navigator.pop() dapat kembali ke halaman sebelumnya. Navigator.pushReplacement() menambahkan halaman baru sekaligus menggantikan halaman yang sedang aktif, sehingga tidak ada halaman lama di stack dan tombol Back tidak akan kembali ke halaman yang digantikan. Navigator.pop() mengeluarkan halaman teratas dari stack dan kembali ke halaman di bawahnya. Kami menggunakan Navigator.push() pada kartu aksi di halaman utama untuk membuka formulir sehingga pengguna dapat kembali dengan menekan tombol Back. Kami juga menggunakan Navigator.pushReplacement() di drawer untuk mengubah halaman yang sedang ditampilkan dengan MyHomePage, sehingga pengguna tidak akan kembali ke halaman formulir yang telah dibuka sebelumnya ketika mereka menekan tombol Back
+2. Scaffold menyediakan kerangka dasar yang selalu ada (AppBar di atas, body di tengah, dan Drawer di sisi) sehingga setiap layar memiliki struktur yang konsisten. Misalnya, AppBar menampilkan judul dan warna tema, dan Drawer menawarkan navigasi keseluruhan halaman. Karena keduanya diatur di setiap halaman, seperti MyHomePage, ProjectFormPage, dan ExperienceFormPage, warna tema biru-indigo yang dipilih pada ThemeData muncul di AppBar dan pada background kartu, sehingga warna portofolio muncul di lebih dari satu halaman
+3. Dalam SingleChildScrollView, formulir dipilih menggunakan kolom karena layar ponsel sering terbatas tinggi. Sementara itu, SingleChildScrollView memungkinkan pengguna menggulir ketika keyboard muncul atau ketika konten melebihi tinggi layar. Widget Padding dan SizedBox berfungsi untuk mengatur jarak antar field sehingga tampilan tidak menempel dan rapi, dan SingleChildScrollView menjaga semua input tetap dapat dijangkau
+4. GlobalKey<FormState> memungkinkan akses ke state formulir, sehingga metode validasi() dapat dipanggil dengan menekan tombol Save. Setiap TextFormField memiliki validator yang mengembalikan kesalahan string jika nilai tidak memenuhi aturan. Salah satu contoh nilai yang ditolak adalah string yang hanya berisi spasi pada kolom judul pengalaman (value?.trim().isEmpty). Hal ini disebabkan oleh fakta bahwa spasi sendiri tidak menyediakan informasi yang berguna. Hanya dengan menentukan jenis input (seperti TextInputType.text) atau papan ketik tidak akan cukup untuk memastikan bahwa data yang disimpan di backend adalah valid. Ini karena validasi bisnis harus dilakukan dengan panjang maksimum, format URL, atau urutan tanggal
+
+## Strategi Prompting
+Saya kirim pesan error dan pengecekan step yang sudah aku kerjakan dan yang belum aku bertanya ke claude kenapa terjadi eror sesuai dengan kondisi nyata yang terjadi pada laptopku, terus aku coba uji lokal terlebih dahulu setiap step untuk mengurangi eror.
+
+## AI Disclosure
+Saya menggunakan Claude sebagai bantuan dalam beberapa bagian tugas ini, dengan rincian sebagai berikut:
+1. AI sempat menyarankan penggunaan import 'package:material_ui/material_ui.dart'; berdasarkan catatan Flutter 3.50 pada modul. Namun, setelah saya analisis secara kritis pada environment lokal proyek yang menggunakan Flutter 3.47, paket tersebut belum ada di pubspec.yaml sehingga justru memicu error.
+2. Ketika mengintegrasikan form baru ke dalam drawer, AI sempat menghasilkan duplikasi ListTile pada file left_drawer.dart
+
+## Bagian yang saya kerjakan sendiri
+1. Melakukan refactoring manual pemindahan file ke screens/ dan widgets/, serta memperbaiki seluruh jalur import yang terputus
+2. Menyesuaikan model Experience secara mandiri agar field, pilihan dropdown (EXPERIENCE_CHOICES)dan validasi tanggal selaras persis dengan model Django dari tugas web sebelumnya
+3. Mempertahankan impor standar package:flutter/material.dart
+
+## Refleksi Proses
+Tugas 8 memberikan pemahaman bagi saya mengenai manajemen routing stack di Flutter (push, pushReplacement, pop) serta pengelolaan form interaktif menggunakan GlobalKey<FormState>
