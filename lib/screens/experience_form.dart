@@ -12,7 +12,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
   final _formKey = GlobalKey<FormState>();
 
   String _title = "";
-  String _category = "Organization"; 
+  String _category = "Organization";
   String _description = "";
   String _thumbnail = "";
   DateTime? _endedAt;
@@ -31,11 +31,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'Add Experience Form',
-          ),
-        ),
+        title: const Center(child: Text('Add Experience Form')),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
@@ -86,10 +82,12 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                   ),
                   initialValue: _category,
                   items: _categories
-                      .map((category) => DropdownMenuItem(
-                            value: category,
-                            child: Text(category),
-                          ))
+                      .map(
+                        (category) => DropdownMenuItem(
+                          value: category,
+                          child: Text(category),
+                        ),
+                      )
                       .toList(),
                   onChanged: (String? newValue) {
                     setState(() {
@@ -164,15 +162,14 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                     Expanded(
                       child: Text(
                         _endedAt == null
-                          ? "Tanggal Selesai: Masih Berlangsung (Ongoing)"
-                          : "Tanggal Selesai: ${_endedAt!.year}-${_endedAt!.month.toString().padLeft(2, '0')}-${_endedAt!.day.toString().padLeft(2, '0')}",
+                            ? "Tanggal Selesai: Masih Berlangsung (Ongoing)"
+                            : "Tanggal Selesai: ${_endedAt!.year}-${_endedAt!.month.toString().padLeft(2, '0')}-${_endedAt!.day.toString().padLeft(2, '0')}",
                         style: const TextStyle(fontSize: 14),
                       ),
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
-                        backgroundColor:
-                            WidgetStateProperty.all(Colors.indigo),
+                        backgroundColor: WidgetStateProperty.all(Colors.indigo),
                       ),
                       onPressed: () async {
                         final DateTime? picked = await showDatePicker(
@@ -203,8 +200,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStateProperty.all(Colors.indigo),
+                      backgroundColor: WidgetStateProperty.all(Colors.indigo),
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -212,20 +208,23 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text('Pengalaman berhasil ditambahkan!'),
+                              title: const Text(
+                                'Pengalaman berhasil ditambahkan!',
+                              ),
                               content: SingleChildScrollView(
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('Judul: $_title'),
                                     Text('Kategori: $_category'),
                                     Text('Deskripsi: $_description'),
-                                    Text('Thumbnail: ${_thumbnail.isEmpty ? "(Kosong)" : _thumbnail}'),
+                                    Text(
+                                      'Thumbnail: ${_thumbnail.isEmpty ? "(Kosong)" : _thumbnail}',
+                                    ),
                                     Text(
                                       _endedAt == null
-                                        ? 'Tanggal Selesai: Masih Berlangsung (Ongoing)'
-                                        : 'Tanggal Selesai: ${_endedAt!.year}-${_endedAt!.month.toString().padLeft(2, '0')}-${_endedAt!.day.toString().padLeft(2, '0')}',
+                                          ? 'Tanggal Selesai: Masih Berlangsung (Ongoing)'
+                                          : 'Tanggal Selesai: ${_endedAt!.year}-${_endedAt!.month.toString().padLeft(2, '0')}-${_endedAt!.day.toString().padLeft(2, '0')}',
                                     ),
                                   ],
                                 ),

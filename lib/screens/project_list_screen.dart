@@ -127,9 +127,8 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProjectDetailScreen(
-                            project: project,
-                          ),
+                          builder: (context) =>
+                              ProjectDetailScreen(project: project),
                         ),
                       );
                     },

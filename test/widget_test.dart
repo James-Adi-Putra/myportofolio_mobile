@@ -3,7 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 
 void main() {
-  testWidgets('InfoCard displays title and content correctly', (WidgetTester tester) async {
+  testWidgets('InfoCard displays title and content correctly', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(

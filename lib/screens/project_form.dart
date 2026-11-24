@@ -50,9 +50,9 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
 
     try {
       final createdProject = await context.read<ApiClient>().createProject(
-            newProject,
-            token: token,
-          );
+        newProject,
+        token: token,
+      );
 
       if (!mounted) return;
       await showDialog(
@@ -97,7 +97,9 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Gagal membuat proyek (${e.statusCode}): ${e.message}'),
+            content: Text(
+              'Gagal membuat proyek (${e.statusCode}): ${e.message}',
+            ),
             backgroundColor: Colors.red,
           ),
         );
@@ -178,7 +180,8 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
               TextFormField(
                 decoration: InputDecoration(
                   labelText: "Skills Used",
-                  hintText: "Contoh: Flutter, Django REST Framework, PostgreSQL",
+                  hintText:
+                      "Contoh: Flutter, Django REST Framework, PostgreSQL",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -208,7 +211,9 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
                     return "Project URL cannot be empty!";
                   }
                   final uri = Uri.tryParse(value.trim());
-                  if (uri == null || !uri.hasScheme || (!uri.isScheme('http') && !uri.isScheme('https'))) {
+                  if (uri == null ||
+                      !uri.hasScheme ||
+                      (!uri.isScheme('http') && !uri.isScheme('https'))) {
                     return "Format URL harus valid (diawali http:// atau https://)!";
                   }
                   return null;
