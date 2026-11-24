@@ -108,7 +108,7 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
                       children: [
                         const SizedBox(height: 4),
                         Text(
-                          project.techStack,
+                          project.skillsUsed,
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.primary,
                             fontWeight: FontWeight.w600,
